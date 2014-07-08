@@ -6,7 +6,7 @@
     <script src='easyrtc.js'></script>
 </head>
 <style>
-#demoContainer {
+#container {
   position:relative;
 }
 #connectControls {
@@ -35,11 +35,11 @@
 </style>
 <body>
   <body onload="connect();">
-    <div id="demoContainer">
+    <div id="container">
       <div id="connectControls">
-        <div id="iam">Waiting for interview partner...</div>
+        <div id="iam">Waiting for interview practice partner...</div>
         <br />
-        <strong>Connected user:</strong>
+        <strong>Connected users:</strong>
         <div id="otherClients"></div>
       </div>
       <div id="videos">
@@ -104,8 +104,6 @@
     function loginFailure(errorCode, message) {
         easyrtc.showError(errorCode, message);
     }
-
-    connect();
 
   </script>
 </body>
