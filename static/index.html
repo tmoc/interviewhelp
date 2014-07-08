@@ -2,109 +2,84 @@
 <html>
 <head>
     <title>Interview Help</title>
-    <script src='/socket.io/socket.io.js'></script>
-    <script src='easyrtc.js'></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="easyrtc.js"></script>
+    <script src="jquery.js"></script>
+    <script src="app.js"></script>
 </head>
-<style>
-#container {
-  position:relative;
-}
-#connectControls {
-  float:left;
-  width:250px;
-  text-align:center;
-  border: none;
-}
-#otherClients {
-  height:200px;
-  overflow-y:scroll;
-}
-#selfVideo {
-  height:225px;
-  width:300px;
-  float:left;
-  border:1px solid gray;
-  margin-left:10px;
-}
-#callerVideo {
-  height:225px;
-  width:300px;
-  border:1px solid gray;
-  margin-left:10px;
-}
-</style>
 <body>
-  <body onload="connect();">
-    <div id="container">
-      <div id="connectControls">
-        <div id="iam">Waiting for interview practice partner...</div>
-        <br />
-        <strong>Connected users:</strong>
-        <div id="otherClients"></div>
-      </div>
-      <div id="videos">
-        <video autoplay="autoplay" class="easyrtcMirror" id="selfVideo" muted="muted" volume="0" ></video>
-        <div style="position:relative;float:left;">
-        <video autoplay="autoplay" id="callerVideo"></video>
-        </div>
-      </div>
+  <header><h2>Job Interview Help<h3></header>
+  <div id="container">
+    <div id="connectControls">
+      <video autoplay="autoplay" class="easyrtcMirror" id="selfVideo" muted="muted" volume="0" ></video>
+
+      <div id="iam">Waiting for camera &amp; microphone...</div>
+
+      <br />
+
+      <strong>Connected users:</strong>
+
+      <div id="otherClients"></div>
     </div>
-  </body>
 
-  <script>
-    var selfEasyrtcid = "";
+    <video autoplay="autoplay" id="callerVideo"></video>
+    <button id="showquestions">Click for interview questions</button> 
+    <div id="questions">
+      <button id="hidequestions">Hide questions</button>
+      <ul>
+        <li>Are you the best person for this job? Why?</li>
+        <li>Are you overqualified for this job?</li>
+        <li>Describe a difficult experience at work and how you handled it.</li>
+        <li>Describe yourself.</li>
+        <li>Describe your best boss and your worst boss.</li>
+        <li>Describe your career goals.</li>
+        <li>Describe your work style.</li>
+        <li>Do you prefer to work alone or on a team?</li>
+        <li>Do you take work home with you?</li>
+        <li>Give some examples of teamwork.</li>
+        <li>Have you ever had difficulty working with a manager?</li>
+        <li>Have you gotten angry at work? What happened?</li>
+        <li>How do you handle pressure?</li>
+        <li>How do you measure success?</li>
+        <li>How long do you expect to work for this company?</li>
+        <li>How much do you expect to get paid?</li>
+        <li>How would you describe the pace at which you work?</li>
+        <li>How would you describe yourself?</li>
+        <li>How would you handle it if your boss was wrong?</li>
+        <li>Is there a type of work environment you prefer?</li>
+        <li>Is there anything else I can tell you about the job and the company?</li>
+        <li>Tell me why you want to work here.</li>
+        <li>What are you looking for in your next position?</li>
+        <li>What are you passionate about?</li>
+        <li>What are your goals for the future?</li>
+        <li>What are your salary requirements?</li>
+        <li>What can you do for this company?</li>
+        <li>What can you contribute to this company?</li>
+        <li>What challenges are you looking for in your next job?</li>
+        <li>What did you like or dislike about your previous job?</li>
+        <li>What do you expect from a supervisor?</li>
+        <li>What do you find are the most difficult decisions to make?</li>
+        <li>What have you learned from your mistakes?</li>
+        <li>What interests you about this job?</li>
+        <li>What is your greatest strength?</li>
+        <li>What is your greatest weakness?</li>
+        <li>What major challenges have you handled?</li>
+        <li>What problems have you encountered at work?</li>
+        <li>What was your biggest accomplishment (failure) in this position?</li>
+        <li>What was most (least) rewarding about your job?</li>
+        <li>What relevant experience do you have?</li>
+        <li>What will you do if you don't get a job offer?</li>
+        <li>Why are you leaving your job?</li>
+        <li>Why do you want this job?</li>
+        <li>Why did you resign?</li>
+        <li>Why did you quit your job?</li>
+        <li>Why were you fired?</li>
+        <li>Why should we hire you?</li>
+        <li>What do you know about this company?</li>
+      </ul>
 
-
-    function connect() {
-        easyrtc.setRoomOccupantListener(convertListToButtons);
-        easyrtc.easyApp("easyrtc.audioVideo", "selfVideo", ["callerVideo"], loginSuccess, loginFailure);
-     }
-
-
-    function clearConnectList() {
-        var otherClientDiv = document.getElementById('otherClients');
-        while (otherClientDiv.hasChildNodes()) {
-            otherClientDiv.removeChild(otherClientDiv.lastChild);
-        }
-    }
-
-
-    function convertListToButtons (roomName, data, isPrimary) {
-        clearConnectList();
-        var otherClientDiv = document.getElementById('otherClients');
-        for(var easyrtcid in data) {
-            var button = document.createElement('button');
-            button.onclick = function(easyrtcid) {
-                return function() {
-                    performCall(easyrtcid);
-                };
-            }(easyrtcid);
-
-            var label = document.createTextNode(easyrtc.idToName(easyrtcid));
-            button.appendChild(label);
-            otherClientDiv.appendChild(button);
-        }
-    }
-
-    function performCall(otherEasyrtcid) {
-        easyrtc.hangupAll();
-
-        var successCB = function() {};
-        var failureCB = function() {};
-        easyrtc.call(otherEasyrtcid, successCB, failureCB);
-    }
-
-
-    function loginSuccess(easyrtcid) {
-        selfEasyrtcid = easyrtcid;
-        document.getElementById("iam").innerHTML = "My ID: " + easyrtc.cleanId(easyrtcid);
-    }
-
-
-    function loginFailure(errorCode, message) {
-        easyrtc.showError(errorCode, message);
-    }
-
-  </script>
+    </div>
+  </div>
 </body>
 </html>
