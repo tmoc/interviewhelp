@@ -1,0 +1,22 @@
+{
+  "name"        : "interview_help",
+  "version"     : "0.0.1",
+  "author"      : "Tom",
+  "description" : "Help with interviews",
+
+  "private"     : true,
+
+  "scripts": {
+    "start"     : "node server.js"
+  },
+
+  "dependencies" : {
+    "easyrtc"   : "*",
+    "express"   : "*",
+    "socket.io" : "0.9.x"
+  },
+
+  "engines": {
+    "node"      : ">=0.8"
+  }
+}
