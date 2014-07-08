@@ -52,8 +52,8 @@ header h2 {
 }
 
 #showquestions {
-  margin-left: 25px;
   margin-bottom: 10px;
+  text-align: center;
   cursor: pointer;
 }
 
