@@ -25,6 +25,7 @@ var convertListToButtons = function (roomName, data, isPrimary) {
 
     var label = document.createTextNode(easyrtc.idToName(easyrtcid));
     button.appendChild(label);
+    $(button).css({'background-color': '#ddd', 'cursor': 'pointer'});
     otherClientDiv.appendChild(button);
   }
 };

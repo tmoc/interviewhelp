@@ -53,15 +53,19 @@ main {
 }
 
 #showquestions {
+  border-radius: 10px;
   margin-bottom: 10px;
   text-align: center;
   cursor: pointer;
+  background-color: #ff9c00;
 }
 
 #hidequestions {
+  border-radius: 10px;
   margin-left: 25px;
   margin-bottom: 10px;
   cursor: pointer;
+  background-color: #ff9c00;
 }
 
 #questions {
@@ -100,6 +104,8 @@ footer {
 }
 
 #hangup {
+  border-radius: 10px;
   text-align: center;
   margin-top: 10px;
+  background-color: #ff9c00;
 }
