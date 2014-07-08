@@ -20,8 +20,10 @@ header h2 {
   margin: 26px 0 0 0;
 }
 
-#container {
+main {
   width: 960px;
+  min-height: 500px;
+  height: auto;
   margin: 0 auto;
   position:relative;
 }
@@ -30,6 +32,7 @@ header h2 {
   width: 300px;
   text-align: center;
   border: none;
+  margin-right: 60px;
 }
 #otherClients {
   height: 200px;
@@ -48,7 +51,6 @@ header h2 {
   height: 450px;
   width: 600px;
   border: none;
-  margin-left: 10px;
 }
 
 #showquestions {
