@@ -32,7 +32,7 @@ var convertListToButtons = function (roomName, data, isPrimary) {
 var performCall = function (otherEasyrtcid) {
   easyrtc.hangupAll();
 
-  var successCB = function () {};
+  var successCB = function () {$('#hangup').toggle();};
   var failureCB = function () {};
   easyrtc.call(otherEasyrtcid, successCB, failureCB);
 };
@@ -48,6 +48,7 @@ var loginFailure = function (errorCode, message) {
 
 $(function () {
   $('#questions').hide();
+  $('#hangup').hide();
   connect();
 
   $('#showquestions').click(function () {
@@ -60,5 +61,10 @@ $(function () {
     $('#connectControls').toggle();
     $('#showquestions').toggle();
     $('#questions').toggle();
+  });
+
+  $('#hangup').click(function () {
+    easyrtc.hangupAll();
+    $('#hangup').toggle();
   });
 });

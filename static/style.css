@@ -47,7 +47,6 @@ main {
   margin: 0 0 10px 0;
 }
 #callerVideo {
-  float: left;
   height: 450px;
   width: 600px;
   border: none;
@@ -91,5 +90,16 @@ footer {
 }
 
 #users {
+  margin-top: 10px;
+}
+
+#callervideowrapper {
+  text-align: center;
+  width: 600px;
+  float: left;
+}
+
+#hangup {
+  text-align: center;
   margin-top: 10px;
 }
