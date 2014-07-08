@@ -47,7 +47,6 @@
         <div style="position:relative;float:left;">
         <video autoplay="autoplay" id="callerVideo"></video>
         </div>
-        <!-- each caller video needs to be in it"s own div so it"s close button can be positioned correctly -->
       </div>
     </div>
   </body>
@@ -98,7 +97,7 @@
 
     function loginSuccess(easyrtcid) {
         selfEasyrtcid = easyrtcid;
-        document.getElementById("iam").innerHTML = "I am " + easyrtc.cleanId(easyrtcid);
+        document.getElementById("iam").innerHTML = "My ID: " + easyrtc.cleanId(easyrtcid);
     }
 
 
