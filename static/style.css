@@ -21,11 +21,12 @@ header h2 {
 }
 
 #container {
+  width: 960px;
+  margin: 0 auto;
   position:relative;
 }
 #connectControls {
   float: left;
-  margin-left: 10px;
   width: 300px;
   text-align: center;
   border: none;
@@ -52,18 +53,20 @@ header h2 {
 
 #showquestions {
   margin-left: 25px;
+  margin-bottom: 10px;
   cursor: pointer;
 }
 
 #hidequestions {
   margin-left: 25px;
+  margin-bottom: 10px;
   cursor: pointer;
 }
 
-#questions {
-  width: 500px; 
-  height: 450px;
+#questionlist {
   overflow-y: scroll;
   overflow-x: hidden;
   margin-left: 10px;
+  width: 350px; 
+  height: 450px;
 }
