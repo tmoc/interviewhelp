@@ -65,10 +65,23 @@ main {
   cursor: pointer;
 }
 
+#questions {
+  float: left;
+}
+
 #questionlist {
   overflow-y: scroll;
   overflow-x: hidden;
-  margin-left: 10px;
   width: 350px; 
+  margin-right: 10px;
   height: 450px;
+}
+
+footer {
+  height: 40px;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  margin: 10px 0 0 0;
+  background-color: #6052DF;
 }
