@@ -20,6 +20,7 @@ var convertListToButtons = function (roomName, data, isPrimary) {
     button.onclick = function (easyrtcid) {
       return function () {
         performCall(easyrtcid);
+        $('#hangup').show();
       };
     }(easyrtcid);
 
@@ -33,7 +34,7 @@ var convertListToButtons = function (roomName, data, isPrimary) {
 var performCall = function (otherEasyrtcid) {
   easyrtc.hangupAll();
 
-  var successCB = function () {$('#hangup').toggle();};
+  var successCB = function () {};
   var failureCB = function () {};
   easyrtc.call(otherEasyrtcid, successCB, failureCB);
 };
@@ -66,6 +67,6 @@ $(function () {
 
   $('#hangup').click(function () {
     easyrtc.hangupAll();
-    $('#hangup').toggle();
+    $('#hangup').hide();
   });
 });
